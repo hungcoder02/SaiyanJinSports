@@ -15,6 +15,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "address")
+    private String address;
+
+
     @OneToOne
     @JoinColumn(name = "shopping_id", referencedColumnName = "id")
     private Shopping shopping;
