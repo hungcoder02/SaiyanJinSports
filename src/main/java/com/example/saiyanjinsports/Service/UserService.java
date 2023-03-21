@@ -40,5 +40,34 @@ public class UserService {
             response.setMessage("Internal Sever Errors");
             return response;
         }
+
+    }
+    public Response getOne(long id){
+        Response response = new Response();
+        try {
+            User user = userRepository.findById(id).orElse(null);
+            if (user == null ){
+                response.setStatus(404);
+                response.setMessage("not found");
+                return response;
+            }
+            UserDTO userDTO = new UserDTO();
+            userDTO.setId(user.getId());
+            userDTO.setEmail(user.getEmail());
+            userDTO.setPhone(user.getPhone());
+            userDTO.setAddress(user.getAddress());
+            //role
+            for (Role r : user.getRoles()){
+                userDTO.getRole().add(r.getName());
+            }
+            response.setStatus(200);
+            response.setMessage("OK");
+            response.setData(userDTO);
+            return response;
+        }catch (Exception e){
+            response.setStatus(500);
+            response.setMessage("Internal Sever Errors");
+            return response;
+        }
     }
 }
