@@ -1,13 +1,13 @@
 package com.example.saiyanjinsports.Controller;
 
 import com.example.saiyanjinsports.Model.Response;
+import com.example.saiyanjinsports.Payload.request.CreateCategory;
+import com.example.saiyanjinsports.Payload.request.DeleteCategory;
+import com.example.saiyanjinsports.Payload.request.UpdateCategory;
 import com.example.saiyanjinsports.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/saiyanjin/category")
@@ -26,4 +26,23 @@ public class CategoryController {
         Response response = categoryService.getOne(id);
         return ResponseEntity.status(response.getStatus()).body(response);
     }
+
+    @PostMapping("/create")
+    public ResponseEntity<Response> create(@RequestBody CreateCategory dto) {
+        Response response = categoryService.create(dto);
+        return ResponseEntity.status(response.getStatus()).body(response);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Response> update(@RequestBody UpdateCategory dto){
+        Response response = categoryService.update(dto);
+        return ResponseEntity.status(response.getStatus()).body(response);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Response> delete(@RequestBody DeleteCategory dto){
+        Response response = categoryService.delete(dto);
+        return ResponseEntity.status(response.getStatus()).body(response);
+    }
 }
+

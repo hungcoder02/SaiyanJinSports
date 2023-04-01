@@ -25,7 +25,7 @@ public class ProductService {
             for (Product p : products){
                 ProductDTO productDTO = new ProductDTO();
                 productDTO.setId(p.getId());
-                productDTO.setName(p.getPro_name());
+                productDTO.setName(p.getName());
                 productDTO.setPrice(p.getPrice());
                 productDTO.setDescription(p.getDescription());
                 productDTO.setInformation(p.getInformation());
@@ -51,7 +51,7 @@ public class ProductService {
             }
             ProductDTO productDTO = new ProductDTO();
             productDTO.setId(product.getId());
-            productDTO.setName(product.getPro_name());
+            productDTO.setName(product.getName());
             productDTO.setPrice(product.getPrice());
             productDTO.setDescription(product.getDescription());
             productDTO.setInformation(product.getInformation());
@@ -72,7 +72,7 @@ public class ProductService {
             Product product = productRepository.findByName(createProduct.getName()).orElse(null);
             if(product == null){
                 product = new Product();
-                product.setPro_name(createProduct.getName());
+                product.setName(createProduct.getName());
                 product.setPrice(createProduct.getPrice());
                 product.setDescription(createProduct.getDescription());
                 product.setInformation(createProduct.getInformation());
@@ -98,7 +98,7 @@ public class ProductService {
             if (product != null){
                 Product check = productRepository.findByName(dto.getName()).orElse(null);
                 if(check == null){
-                    product.setPro_name(dto.getName());
+                    product.setName(dto.getName());
                     product.setPrice(dto.getPrice());
                     product.setDescription(dto.getDescription());
                     product.setInformation(dto.getInformation());

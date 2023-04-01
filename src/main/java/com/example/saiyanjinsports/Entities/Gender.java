@@ -15,7 +15,7 @@ public class Gender {
     private long id;
 
     @Column(name = "gender_name")
-    private String gender_name;
+    private String name;
 
     @OneToMany
     @JoinColumn(name = "pro_id")
