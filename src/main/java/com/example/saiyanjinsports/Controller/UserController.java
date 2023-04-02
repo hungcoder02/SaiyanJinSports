@@ -1,9 +1,9 @@
 package com.example.saiyanjinsports.Controller;
 
 import com.example.saiyanjinsports.Model.Response;
-import com.example.saiyanjinsports.Payload.request.CreateUser;
-import com.example.saiyanjinsports.Payload.request.DeleteUser;
-import com.example.saiyanjinsports.Payload.request.UpdateUser;
+import com.example.saiyanjinsports.Payload.request.User.CreateUser;
+import com.example.saiyanjinsports.Payload.request.User.DeleteUser;
+import com.example.saiyanjinsports.Payload.request.User.UpdateUser;
 import com.example.saiyanjinsports.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -3,9 +3,9 @@ package com.example.saiyanjinsports.Service;
 import com.example.saiyanjinsports.Entities.Category;
 import com.example.saiyanjinsports.Model.CategoryDTO;
 import com.example.saiyanjinsports.Model.Response;
-import com.example.saiyanjinsports.Payload.request.CreateCategory;
-import com.example.saiyanjinsports.Payload.request.DeleteCategory;
-import com.example.saiyanjinsports.Payload.request.UpdateCategory;
+import com.example.saiyanjinsports.Payload.request.Category.CreateCategory;
+import com.example.saiyanjinsports.Payload.request.Category.DeleteCategory;
+import com.example.saiyanjinsports.Payload.request.Category.UpdateCategory;
 import com.example.saiyanjinsports.Repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -118,7 +118,7 @@ public class CategoryService {
             Category category = categoryRepository.findById(dto.getId()).orElse(null);
             if (category != null){
                 category.setId(dto.getId());
-                categoryRepository.save(category);
+                categoryRepository.delete(category);
                 response.setStatus(200);
                 response.setMessage("Deleted");
                 return response;

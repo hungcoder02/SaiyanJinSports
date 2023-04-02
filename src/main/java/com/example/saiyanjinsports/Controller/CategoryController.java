@@ -1,9 +1,9 @@
 package com.example.saiyanjinsports.Controller;
 
 import com.example.saiyanjinsports.Model.Response;
-import com.example.saiyanjinsports.Payload.request.CreateCategory;
-import com.example.saiyanjinsports.Payload.request.DeleteCategory;
-import com.example.saiyanjinsports.Payload.request.UpdateCategory;
+import com.example.saiyanjinsports.Payload.request.Category.CreateCategory;
+import com.example.saiyanjinsports.Payload.request.Category.DeleteCategory;
+import com.example.saiyanjinsports.Payload.request.Category.UpdateCategory;
 import com.example.saiyanjinsports.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

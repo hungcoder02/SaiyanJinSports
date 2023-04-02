@@ -1,10 +1,9 @@
 package com.example.saiyanjinsports.Controller;
 
 import com.example.saiyanjinsports.Model.Response;
-import com.example.saiyanjinsports.Payload.request.CreateProduct;
-import com.example.saiyanjinsports.Payload.request.DeleteProduct;
-import com.example.saiyanjinsports.Payload.request.UpdateCategory;
-import com.example.saiyanjinsports.Payload.request.UpdateProduct;
+import com.example.saiyanjinsports.Payload.request.Product.CreateProduct;
+import com.example.saiyanjinsports.Payload.request.Product.DeleteProduct;
+import com.example.saiyanjinsports.Payload.request.Product.UpdateProduct;
 import com.example.saiyanjinsports.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

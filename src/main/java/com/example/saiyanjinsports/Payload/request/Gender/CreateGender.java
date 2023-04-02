@@ -1,4 +1,4 @@
-package com.example.saiyanjinsports.Payload.request;
+package com.example.saiyanjinsports.Payload.request.Gender;
 
 import lombok.Data;
 
