@@ -1,37 +1,41 @@
 package com.example.saiyanjinsports.Service;
 
 import com.example.saiyanjinsports.Entities.Gender;
-import com.example.saiyanjinsports.Entities.Status;
+import com.example.saiyanjinsports.Entities.Images;
+import com.example.saiyanjinsports.Model.GenderDTO;
+import com.example.saiyanjinsports.Model.ImgDTO;
 import com.example.saiyanjinsports.Model.Response;
-import com.example.saiyanjinsports.Model.StatusDTO;
-import com.example.saiyanjinsports.Payload.request.Status.CreateStatus;
-import com.example.saiyanjinsports.Payload.request.Status.DeleteStatus;
-import com.example.saiyanjinsports.Payload.request.Status.UpdateStatus;
-import com.example.saiyanjinsports.Repository.StatusRepository;
+import com.example.saiyanjinsports.Payload.request.Gender.CreateGender;
+import com.example.saiyanjinsports.Payload.request.Gender.DeleteGender;
+import com.example.saiyanjinsports.Payload.request.Gender.UpdateGender;
+import com.example.saiyanjinsports.Payload.request.Img.CreateImg;
+import com.example.saiyanjinsports.Payload.request.Img.DeleteImg;
+import com.example.saiyanjinsports.Payload.request.Img.UpdateImg;
+import com.example.saiyanjinsports.Repository.ImagesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class StatusService {
+public class ImagesService {
     @Autowired
-    StatusRepository statusRepository;
+    ImagesRepository imagesRepository;
+
     public Response getAll(){
         Response response = new Response();
         try {
-            List<Status> statuses = statusRepository.findAll();
-            List<StatusDTO> statusDTOS = new ArrayList<>();
-            for (Status s : statuses){
-                StatusDTO statusDTO = new StatusDTO();
-                statusDTO.setId(s.getId());
-                statusDTO.setName(s.getName());
+            List<Images> images =imagesRepository.findAll();
+            List<ImgDTO> imgDTOS = new ArrayList<>();
+            for (Images i : images){
+                ImgDTO imgDTO = new ImgDTO();
+                imgDTO.setId(i.getId());
+                imgDTO.setUrl(i.getName());
             }
             response.setStatus(200);
             response.setMessage("OK");
-            response.setData(statusDTOS);
+            response.setData(imgDTOS);
             return response;
         }catch (Exception e){
             response.setStatus(500);
@@ -42,18 +46,18 @@ public class StatusService {
     public Response getOne(long id){
         Response response = new Response();
         try {
-            Status status = statusRepository.findById(id).orElse(null);
-            if (status == null){
-                response.setStatus(404);
-                response.setMessage("not found");
+            Images images = imagesRepository.findById(id).orElse(null);
+            if(images == null){
+                response.setStatus(400);
+                response.setMessage("Cannot found");
                 return response;
             }
-            StatusDTO statusDTO = new StatusDTO();
-            statusDTO.setId(status.getId());
-            statusDTO.setName(status.getName());
+            ImgDTO imgDTO = new ImgDTO();
+            imgDTO.setId(imgDTO.getId());
+            imgDTO.setUrl(imgDTO.getUrl());
             response.setStatus(200);
             response.setMessage("OK");
-            response.setData(statusDTO);
+            response.setData(imgDTO);
             return response;
         }catch (Exception e){
             response.setStatus(500);
@@ -61,20 +65,20 @@ public class StatusService {
             return response;
         }
     }
-    public Response create(CreateStatus dto){
+    public Response create(CreateImg dto){
         Response response = new Response();
         try {
-            Status status = statusRepository.findByName(dto.getName()).orElse(null);
-            if (status == null){
-                status = new Status();
-                status.setName(dto.getName());
-                statusRepository.save(status);
+            Images images = imagesRepository.findByName(dto.getUrl()).orElse(null);
+            if (images == null){
+                images = new Images();
+                images.setName(dto.getUrl());
+                imagesRepository.save(images);
                 response.setStatus(200);
-                response.setMessage("Created");
+                response.setMessage("Ok");
                 return response;
             }else {
                 response.setStatus(400);
-                response.setMessage("Exist");
+                response.setMessage("Already Exists");
                 return response;
             }
         }catch (Exception e){
@@ -83,15 +87,15 @@ public class StatusService {
             return response;
         }
     }
-    public Response update(UpdateStatus dto){
+    public Response update(UpdateImg dto){
         Response response = new Response();
         try {
-            Status status = statusRepository.findById(dto.getId()).orElse(null);
-            if(status != null){
-                Status check = statusRepository.findByName(dto.getName()).orElse(null);
+            Images images = imagesRepository.findById(dto.getId()).orElse(null);
+            if (images != null){
+                Images check = imagesRepository.findByName(dto.getUrl()).orElse(null);
                 if (check == null){
-                    status.setName(dto.getName());
-                    statusRepository.save(status);
+                    images.setName(dto.getUrl());
+                    imagesRepository.save(images);
                     response.setStatus(200);
                     response.setMessage("OK");
                     return response;
@@ -112,13 +116,13 @@ public class StatusService {
             return response;
         }
     }
-    public Response delete(DeleteStatus dto){
+    public Response delete(DeleteImg dto){
         Response response = new Response();
         try {
-            Status status = statusRepository.findById(dto.getId()).orElse(null);
-            if (status != null){
-                status.setId(dto.getId());
-                statusRepository.delete(status);
+            Images images = imagesRepository.findById(dto.getId()).orElse(null);
+            if (images != null){
+                images.setId(images.getId());
+                imagesRepository.delete(images);
                 response.setStatus(200);
                 response.setMessage("Deleted");
                 return response;

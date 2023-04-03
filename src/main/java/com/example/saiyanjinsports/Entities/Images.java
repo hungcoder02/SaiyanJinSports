@@ -14,6 +14,6 @@ public class Images {
     private long id;
 
     @Column(name = "url")
-    private String url;
+    private String name;
 
 }
