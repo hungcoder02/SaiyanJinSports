@@ -1,6 +1,6 @@
 package com.example.saiyanjinsports.sencurity;
 
-import com.example.saiyanjinsports.sencurity.jwt.JwtAuthenticationFilter;
+//import com.example.saiyanjinsports.sencurity.jwt.JwtAuthenticationFilter;
 import com.example.saiyanjinsports.sencurity.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,10 +34,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         };
     }
 
-    @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter(){
-        return new JwtAuthenticationFilter();
-    }
+//    @Bean
+//    public JwtAuthenticationFilter jwtAuthenticationFilter(){
+//        return new JwtAuthenticationFilter();
+//    }
 
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {

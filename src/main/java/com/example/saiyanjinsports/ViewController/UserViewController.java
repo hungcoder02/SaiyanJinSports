@@ -19,7 +19,7 @@ public class UserViewController {
     public String getAll(Model model){
         List<User> users = (List<User>) userService.getAll().getData();
         model.addAttribute("users", users);
-        return "/Admin/User/index";
+        return "/admin/user/index";
     }
 
 }
