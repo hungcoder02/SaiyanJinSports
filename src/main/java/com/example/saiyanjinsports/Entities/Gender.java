@@ -18,6 +18,5 @@ public class Gender {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "pro_id")
     private List<Product> product;
 }

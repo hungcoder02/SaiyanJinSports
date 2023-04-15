@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Gender</title>
+</head>
+<body>
+<div class="col-3"></div>
+<div class="container col-6">
+    <h1>New Gender</h1>
+    <div class="col-md-auto">
+        <form th:object="${gender}" th:action="@{/gender/add}"  method="post">
+            <div>
+                <label th:text="Name" th:for="name"></label>
+                <input type="text" th:field="*{name}" class="form-control" placeholder="Email"/>
+            </div>
+            <div style="clear: both; display: block; height: 10px"></div>
+
+            <input type="submit" class="btn btn-success" value="Save"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
