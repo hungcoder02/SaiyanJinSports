@@ -16,8 +16,8 @@
         <tr th:each="gender : ${genders}">
             <td th:text="${gender.getName()}"></td>
             <td>
-                <a th:href="@{/gender/edit?id={id}(id=${category.id})}" class="btn btn-primary">Edit</a>
-                <a th:href="@{/gender/delete?id={id}(id=${category.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/gender/edit?id={id}(id=${gender.id})}" class="btn btn-primary">Edit</a>
+                <a th:href="@{/gender/delete?id={id}(id=${gender.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
     </table>
