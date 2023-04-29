@@ -43,7 +43,7 @@ public class UserViewController {
     public String editUser(@RequestParam("id") Long id, Model model){
       User userEdit = userRepository.findById(id).get();
       model.addAttribute("user",userEdit);
-      return "/Admin/User/addUser";
+      return "/Admin/User/editUser";
     }
     @PostMapping("/edit")
     public String updateUser(@ModelAttribute("user") User user){
