@@ -25,6 +25,9 @@ public class Product {
     @Column(name = "pro_infor")
     private String information;
 
+    @Column(name = "image")
+    private String imageName;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;

@@ -8,49 +8,52 @@
     <title>Add</title>
 </head>
 <body>
-<div class="col-3"></div>
-<div class="container col-6">
-    <h1>New Product</h1>
-    <div class="col-md-auto">
-        <form th:object="${product}" th:action="@{/product/add}"  method="post">
-            <div>
-                <label th:text="Name" th:for="name"></label>
-                <input type="text" th:field="*{name}" class="form-control"/>
-            </div>
-            <div style="clear: both; display: block; height: 10px"></div>
-            <div>
-                <label th:text="Price" th:for="price"></label>
-                <input type="text" th:field="*{price}" class="form-control"/>
-            </div>
-            <div style="clear: both; display: block; height: 10px"></div>
-            <div>
-                <label th:text="Description" th:for="description"></label>
-                <input type="text" th:field="*{description}" class="form-control"/>
-            </div>
-            <div style="clear: both; display: block; height: 10px"></div>
-            <div>
-                <label th:text="Information" th:for="information"></label>
-                <input type="text" th:field="*{information}" class="form-control"/>
-            </div>
-            <div style="clear: both; display: block; height: 10px"></div>
-            <!--        <div>-->
-            <!--            <label th:text="Category" th:for="category"></label>-->
-            <!--            <input type="text" th:field="*{category}" class="form-control"/>-->
-            <!--        </div>-->
-            <!--        <div style="clear: both; display: block; height: 10px"></div>-->
-            <select name="category">
-                <option th:each="category : ${listCategory}" th:value="${category.getId()}" th:text="${category.getName()}">
+<section layout:fragment="content">
+        <h1>New Product</h1>
+        <div class="col-md-auto">
+            <form th:object="${product}" th:action="@{/product/add}"  method="post" enctype="multipart/form-data">
+                <div>
+                    <label th:text="Name" th:for="name"></label>
+                    <input type="text" th:field="*{name}" class="form-control"/>
+                </div>
+                <div style="clear: both; display: block; height: 10px"></div>
+                <div>
+                    <label th:text="Price" th:for="price"></label>
+                    <input type="text" th:field="*{price}" class="form-control"/>
+                </div>
+                <div style="clear: both; display: block; height: 10px"></div>
+                <div>
+                    <label th:text="Description" th:for="description"></label>
+                    <input type="text" th:field="*{description}" class="form-control"/>
+                </div>
+                <div style="clear: both; display: block; height: 10px"></div>
+                <div>
+                    <label th:text="Information" th:for="information"></label>
+                    <input type="text" th:field="*{information}" class="form-control"/>
+                </div>
+                <div style="clear: both; display: block; height: 10px"></div>
+                <!--        <div>-->
+                <!--            <label th:text="Category" th:for="category"></label>-->
+                <!--            <input type="text" th:field="*{category}" class="form-control"/>-->
+                <!--        </div>-->
+                <!--        <div style="clear: both; display: block; height: 10px"></div>-->
+                <select name="category">
+                    <option th:each="category : ${listCategory}" th:value="${category.getId()}" th:text="${category.getName()}">
 
-                </option>
-            </select>
-            <select name="gender">
-                <option th:each="gender : ${listGender}" th:value="${gender.getId()}" th:text="${gender.getName()}">
+                    </option>
+                </select>
+                <select name="gender">
+                    <option th:each="gender : ${listGender}" th:value="${gender.getId()}" th:text="${gender.getName()}">
 
-                </option>
-            </select>
-            <input type="submit" class="btn btn-success" value="Save"/>
-        </form>
-    </div>
-</div>
+                    </option>
+                </select>
+                <input type="file" name="file"/>
+                <input type="submit" class="btn btn-success" value="Save"/>
+            </form>
+        </div>
+</section>
+
+
+
 </body>
 </html>
