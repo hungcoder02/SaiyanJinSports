@@ -53,11 +53,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeHttpRequests()
                 .antMatchers("/auth/login").permitAll()
-                .anyRequest().permitAll();
-//                .authenticated()
-//                .and().formLogin().defaultSuccessUrl("/user/").permitAll()
-//                .and()
-//               .logout().permitAll();
+                .antMatchers("/user/**").hasAuthority("ADMIN")
+                .antMatchers("/category/**").hasAuthority("ADMIN")
+                .antMatchers("/gender/**").hasAuthority("ADMIN")
+                .antMatchers("/product/**").hasAuthority("ADMIN")
+                .anyRequest()
+                .authenticated()
+                .and().formLogin().defaultSuccessUrl("/default").permitAll()
+                .and()
+               .logout().permitAll();
 //        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
