@@ -30,6 +30,7 @@ public class ProductClientController {
         model.addAttribute("menProducts",productView);
         return "/web/mens";
     }
+    @GetMapping("/womens")
     public String getWomenProducts(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
                                    @RequestParam(value = "size", defaultValue = "8") int size){
         Pageable pageable = PageRequest.of(page, size);

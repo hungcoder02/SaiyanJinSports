@@ -101,25 +101,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
-								<li class="active menu__item"><a class="menu__link" href="index.html">Home <span
+								<li class="active menu__item"><a class="menu__link" href="../../view-home/">Home <span
 											class="sr-only">(current)</span></a></li>
-								<li class=" menu__item"><a class="menu__link" href="about.html">About</a></li>
-								<li class="dropdown menu__item"><a class="menu__link" href="mens.html">Men's wear</a>
+								<li class=" menu__item"><a class="menu__link" href="../../view-home/about">About</a></li>
+								<li class="dropdown menu__item"><a class="menu__link" href="mens">Men's wear</a>
 
 								</li>
-								<li class="dropdown menu__item"><a class="menu__link" href="womens.html">Women's
+								<li class="dropdown menu__item"><a class="menu__link" href="womens">Women's
 										wear</a>
 
 								</li>
 								<li class="menu__item dropdown">
 <!--									<a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Short-->
 <!--										Codes <b class="caret"></b></a>-->
-									<ul class="dropdown-menu agile_short_dropdown">
-										<li><a href="icons.html">Web Icons</a></li>
-										<li><a href="typography.html">Typography</a></li>
-									</ul>
 								</li>
-								<li class=" menu__item"><a class="menu__link" href="contact.html">Contact</a></li>
+								<li class=" menu__item"><a class="menu__link" href="../../view-home/contact">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -271,7 +267,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="agile_inner_breadcrumb">
 
 					<ul class="w3_short">
-						<li><a href="index.html">Home</a><i>|</i></li>
+						<li><a href="../../view-home/">Home</a><i>|</i></li>
 						<li>Men's Wear</li>
 					</ul>
 				</div>
@@ -354,8 +350,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div th:each="product : ${menProducts.getProducts()}" class="col-md-3 product-men">
 				<div class="men-pro-item simpleCart_shelfItem">
 					<div class="men-thumb-item">
-						<img src="../../static/css/images/m1.jpg" alt="" class="pro-image-front">
-						<img src="../../static/css/images/m1.jpg" alt="" class="pro-image-back">
+						<img th:src="@{${'../../'+product.getImageName()}}" alt="" class="pro-image-front">
+						<img th:src="@{${'../../'+product.getImageName()}}" alt="" class="pro-image-back">
 						<div class="men-cart-pro">
 							<div class="inner-men-cart-pro">
 								<a href="single.html" class="link-product-add-cart">Quick View</a>
@@ -726,7 +722,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer">
 		<div class="footer_agile_inner_info_w3l">
 			<div class="col-md-3 footer-left">
-				<h2><a href="index.html"><span>S</span>aiyanJin Sport </a></h2>
+				<h2><a href="../../view-home/"><span>S</span>aiyanJin Sport </a></h2>
 				<p>Chào bạn, chúng tôi rất vui được giới thiệu về các trang mạng xã hội của cửa hàng. Chúng tôi
 					hiện có mặt trên nhiều nền tảng mạng xã hội phổ biến như Facebook, Instagram, Twitter, Pinterest, và YouTube.
 					Trên Facebook, bạn có thể tìm thấy trang của cửa hàng chúng tôi để cập nhật những thông tin mới nhất về sản phẩm,
@@ -756,12 +752,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-4 sign-gd">
 						<h4>Our <span>Information</span> </h4>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="mens.html">Men's Wear</a></li>
-							<li><a href="womens.html">Women's wear</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="typography.html">Short Codes</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="../../view-home/">Home</a></li>
+							<li><a href="../../view-product/mens">Men's Wear</a></li>
+							<li><a href="../../view-product/womens">Women's wear</a></li>
+							<li><a href="../../view-home/about">About</a></li>
+							<li><a href="../../view-home/contact">Contact</a></li>
 						</ul>
 					</div>
 

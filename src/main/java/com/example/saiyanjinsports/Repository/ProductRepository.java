@@ -19,7 +19,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query(value = "SELECT * FROM product p WHERE p.gender_id = 1 ",nativeQuery = true)
     Page<Product> findMenProducts(Pageable pageable);
 
-    @Query(value = "SELECT * FROM products p WHERE p.gender_id = 2 ",nativeQuery = true)
+    @Query(value = "SELECT * FROM product p WHERE p.gender_id = 2 ",nativeQuery = true)
     Page<Product> finWomenProducts(Pageable pageable);
 
 
