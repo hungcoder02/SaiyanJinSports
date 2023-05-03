@@ -350,8 +350,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div th:each="product : ${menProducts.getProducts()}" class="col-md-3 product-men">
 				<div class="men-pro-item simpleCart_shelfItem">
 					<div class="men-thumb-item">
+<<<<<<< HEAD
 						<img th:src="@{${'../../'+product.getImageName()}}" alt="" class="pro-image-front">
 						<img th:src="@{${'../../'+product.getImageName()}}" alt="" class="pro-image-back">
+=======
+						<img th:src="@{${'../../css/images/'+product.getImageName()}}" alt="" class="pro-image-front">
+						<img th:src="@{${'../../css/images/'+product.getImageName()}}" alt="" class="pro-image-back">
+>>>>>>> 7f72f0296cc9a1a33f26b5b9c33a9e51e10b852c
 						<div class="men-cart-pro">
 							<div class="inner-men-cart-pro">
 								<a href="single.html" class="link-product-add-cart">Quick View</a>
