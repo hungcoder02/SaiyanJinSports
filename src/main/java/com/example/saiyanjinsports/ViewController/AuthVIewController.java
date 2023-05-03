@@ -4,11 +4,10 @@ import com.example.saiyanjinsports.Entities.Role;
 import com.example.saiyanjinsports.Entities.User;
 import com.example.saiyanjinsports.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +15,27 @@ import javax.servlet.http.HttpServletRequest;
 public class AuthVIewController {
     @Autowired
     UserRepository repository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @GetMapping("/sign-in")
+    public String signIn(Model model){
+        model.addAttribute("user", new User() );
+        return "/Login/signin";
+    }
+    @PostMapping("/sign-in")
+    public String postSignIn(@ModelAttribute("user") User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        repository.save(user);
+        return "redirect:./";
+    }
+
+
+    @GetMapping("/login")
+    public String login(){
+        return "Login/login";
+    }
   @RequestMapping("/default")
   public String login(HttpServletRequest request) {
       String userName = request.getUserPrincipal().getName();

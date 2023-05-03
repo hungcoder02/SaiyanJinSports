@@ -52,16 +52,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeHttpRequests()
-//                .antMatchers("/auth/login").permitAll()
-//                .antMatchers("/user/**").hasAuthority("ADMIN")
-//                .antMatchers("/category/**").hasAuthority("ADMIN")
-//                .antMatchers("/gender/**").hasAuthority("ADMIN")
-//                .antMatchers("/product/**").hasAuthority("ADMIN")
+                .antMatchers("/auth/login").permitAll()
+                .antMatchers("/user/**").hasAuthority("ADMIN")
+                .antMatchers("/category/**").hasAuthority("ADMIN")
+                .antMatchers("/gender/**").hasAuthority("ADMIN")
+                .antMatchers("/product/**").hasAuthority("ADMIN")
                 .anyRequest()
-                .permitAll();
-//                .and().formLogin().defaultSuccessUrl("/default").permitAll()
-//                .and()
-//               .logout().permitAll();
+                .authenticated()
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/default").permitAll()
+                .and()
+               .logout().permitAll();
 //        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 

@@ -4,6 +4,7 @@ import com.example.saiyanjinsports.Entities.User;
 import com.example.saiyanjinsports.Repository.UserRepository;
 import com.example.saiyanjinsports.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ public class UserViewController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @RequestMapping("/")
     public String getAll(Model model){
         List<User> users = (List<User>) userService.getAll().getData();
@@ -34,6 +38,7 @@ public class UserViewController {
     }
     @PostMapping("/add")
     public String createUser(@ModelAttribute("user") User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "redirect:./";
     }
@@ -47,6 +52,7 @@ public class UserViewController {
     }
     @PostMapping("/edit")
     public String updateUser(@ModelAttribute("user") User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "redirect:./";
     }
