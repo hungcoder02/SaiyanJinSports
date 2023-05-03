@@ -13,7 +13,7 @@ import java.nio.file.StandardCopyOption;
 
 @Service
 public class FileService {
-    private static final String uploadDir = "src/main/resources/images";
+    private static final String uploadDir = "src/main/resources/static/css/images";
     public static void saveFile(String fileName, MultipartFile file) throws IOException {
         Path uploadPath = Paths.get(uploadDir);
         if (!Files.exists(uploadPath)) {
