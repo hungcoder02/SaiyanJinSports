@@ -28,7 +28,7 @@ public class AuthVIewController {
     public String postSignIn(@ModelAttribute("user") User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         repository.save(user);
-        return "redirect:./";
+        return "redirect:./login";
     }
 
 

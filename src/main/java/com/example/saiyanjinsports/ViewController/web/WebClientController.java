@@ -21,8 +21,5 @@ public class WebClientController {
     public String contact(){
         return "web/contact";
     }
-    @GetMapping("/single")
-    public String single(){
-        return "web/single";
-    }
+
 }

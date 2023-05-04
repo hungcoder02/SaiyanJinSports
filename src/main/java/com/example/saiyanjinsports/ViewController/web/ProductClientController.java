@@ -41,4 +41,10 @@ public class ProductClientController {
         model.addAttribute("womenProducts", productView);
         return "/web/womens";
     }
+    @GetMapping("/single")
+    public String getSingleProducts(@RequestParam("id") Long id, Model model){
+        Product productEdit = productRepository.findById(id).get();
+        model.addAttribute("product", productEdit );
+        return "web/single";
+    }
 }
