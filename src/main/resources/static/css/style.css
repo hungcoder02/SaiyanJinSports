@@ -709,7 +709,7 @@ figure.effect-roxy img {
 	width: -webkit-calc(100% + 60px);
 	width: calc(100% + 60px);
 	width: -moz-calc(100% + 60px);
-	width: -o-calc(100% + 60px);
+	width: calc(100% + 60px);
 	width: -ms-calc(100% + 60px);
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 	transition: opacity 0.35s, transform 0.35s;

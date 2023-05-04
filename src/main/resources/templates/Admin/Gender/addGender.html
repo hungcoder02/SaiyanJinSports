@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{Admin/fragments.html}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <title>Add Gender</title>
 </head>
 <body>
-<div class="col-3"></div>
-<div class="container col-6">
-    <h1>New Gender</h1>
-    <div class="col-md-auto">
-        <form th:object="${gender}" th:action="@{/gender/add}"  method="post">
+<div id="wrapper">
+    <div class="container">
+        <div class="row justify-content-around">
+        <form th:object="${gender}" th:action="@{/gender/add}"  method="post" class="col-md-6 bg-light p-3 my-3">
+            <h1 class="text-center">New Gender</h1>
             <div>
                 <label th:text="Name" th:for="name"></label>
-                <input type="text" th:field="*{name}" class="form-control" placeholder="Email"/>
+                <input type="text" th:field="*{name}" class="form-control" required placeholder="Email"/>
             </div>
             <div style="clear: both; display: block; height: 10px"></div>
 
             <input type="submit" class="btn btn-success" value="Save"/>
         </form>
     </div>
+</div>
 </div>
 </body>
 </html>

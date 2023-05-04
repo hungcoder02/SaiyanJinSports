@@ -1,37 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{Admin/fragments.html}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
 </head>
 <body>
-<section layout:fragment="content">
-    <div class="col-3"></div>
-    <div class="container col-6">
-        <h1>Edit Product</h1>
-        <form th:object="${product}" th:action="@{/product/edit}"  method="post" enctype="multipart/form-data">
+<div id="wrapper">
+    <div class="container">
+        <div class="row justify-content-around">
+        <form th:object="${product}" th:action="@{/product/edit}"  method="post" enctype="multipart/form-data" class="col-md-6 bg-light p-3 my-3">
+            <h1 class="text-center">New Product</h1>
             <input type="hidden" th:field="*{id}">
             <div>
                 <label th:text="Name" th:for="name"></label>
-                <input type="text" th:field="*{name}" class="form-control"/>
+                <input type="text" th:field="*{name}" class="form-control" required/>
             </div>
             <div style="clear: both; display: block; height: 10px"></div>
             <div>
                 <label th:text="Price" th:for="price"></label>
-                <input type="text" th:field="*{price}" class="form-control"/>
+                <input type="text" th:field="*{price}" class="form-control" required/>
             </div>
             <div style="clear: both; display: block; height: 10px"></div>
             <div>
                 <label th:text="Description" th:for="description"></label>
-                <input type="text" th:field="*{description}" class="form-control"/>
+                <input type="text" th:field="*{description}" class="form-control" required/>
             </div>
             <div style="clear: both; display: block; height: 10px"></div>
             <div>
                 <label th:text="Information" th:for="information"></label>
-                <input type="text" th:field="*{information}" class="form-control"/>
+                <input type="text" th:field="*{information}" class="form-control" required/>
             </div>
             <div style="clear: both; display: block; height: 10px"></div>
             <!--        <div>-->
@@ -54,6 +51,7 @@
         </form>
     </div>
 </section>
-
+    </div>
+</div>
 </body>
 </html>

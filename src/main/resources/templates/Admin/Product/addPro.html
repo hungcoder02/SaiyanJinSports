@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{Admin/fragments.html}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <title>Add Product</title>
 </head>
 <body>
-<section layout:fragment="content">
-        <h1>New Product</h1>
-        <div class="col-md-auto">
-            <form th:object="${product}" th:action="@{/product/add}"  method="post" enctype="multipart/form-data">
+<div id="wrapper">
+    <div class="container">
+        <div class="row justify-content-around">
+            <form th:object="${product}" th:action="@{/product/add}"  method="post" enctype="multipart/form-data"  class="col-md-6 bg-light p-3 my-3">
+                <h1 class="text-center">New Product</h1>
                 <div>
                     <label th:text="Name" th:for="name"></label>
-                    <input type="text" th:field="*{name}" class="form-control"/>
+                    <input type="text" th:field="*{name}" class="form-control" required/>
                 </div>
                 <div style="clear: both; display: block; height: 10px"></div>
                 <div>
                     <label th:text="Price" th:for="price"></label>
-                    <input type="text" th:field="*{price}" class="form-control"/>
+                    <input type="text" th:field="*{price}" class="form-control" required/>
                 </div>
                 <div style="clear: both; display: block; height: 10px"></div>
                 <div>
                     <label th:text="Description" th:for="description"></label>
-                    <input type="text" th:field="*{description}" class="form-control"/>
+                    <input type="text" th:field="*{description}" class="form-control" required/>
                 </div>
                 <div style="clear: both; display: block; height: 10px"></div>
                 <div>
                     <label th:text="Information" th:for="information"></label>
-                    <input type="text" th:field="*{information}" class="form-control"/>
+                    <input type="text" th:field="*{information}" class="form-control" required/>
                 </div>
                 <div style="clear: both; display: block; height: 10px"></div>
                 <!--        <div>-->
@@ -53,7 +54,8 @@
         </div>
 </section>
 
-
+    </div>
+</div>
 
 </body>
 </html>

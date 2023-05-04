@@ -29,7 +29,7 @@
             <li class="nav__list-item">
                 <a href="../../gender/" class="nav__item-link">Genders</a>
             <li class="nav__list-item">
-                <a href="#" class="nav__item-link">Logout</a>
+                <a href="../login" class="nav__item-link">Logout</a>
             </li>
         </ul>
     </nav>
@@ -73,8 +73,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="category : ${categories}">
+                <tr th:each="category : ${categories}" style="line-height: 50px;">
                     <td th:text="${category.getName()}"></td>
+
                     <td>
                         <a th:href="@{/category/edit?id={id}(id=${category.id})}" class="btn">Edit</a>
                         <a th:href="@{/category/delete?id={id}(id=${category.id})}" class="btn btn-delete">Delete</a>
