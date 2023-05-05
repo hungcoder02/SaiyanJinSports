@@ -23,6 +23,9 @@ public class ProductClientController {
     public String getMenProducts(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
                                  @RequestParam(value = "size", defaultValue = "8") int size,
                                  @RequestParam(value = "keyword",defaultValue = "") String keyword){
+        if(page>0){
+            page--;
+        }
         Pageable pageable = PageRequest.of(page,size);
         ProductView  productView = new ProductView();
         Page<Product> p = productRepository.findMenProducts(pageable,keyword);
@@ -35,6 +38,9 @@ public class ProductClientController {
     public String getWomenProducts(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
                                    @RequestParam(value = "size", defaultValue = "8") int size,
                                    @RequestParam(value = "keyword",defaultValue = "") String keyword){
+        if(page>0){
+            page--;
+        }
         Pageable pageable = PageRequest.of(page, size);
         ProductView productView = new ProductView();
         Page<Product> p = productRepository.finWomenProducts(pageable,keyword);
