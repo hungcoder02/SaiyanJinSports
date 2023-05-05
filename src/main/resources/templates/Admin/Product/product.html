@@ -7,6 +7,7 @@
     <title>Dashboard</title>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/adminstyle.css}"/>
+
 </head>
 <body>
 <div class="app-container">
@@ -78,7 +79,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="product : ${products}" style="line-height: 50px;">
+                <tr th:each="product : ${products.getProducts()}" style="line-height: 50px;">
                     <td th:text="${product.getName()}"></td>
                     <td th:text="${product.getPrice()}"></td>
                     <td th:text="${product.getDescription()}"></td>
@@ -93,6 +94,11 @@
                 </tr>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li th:each="i : ${#numbers.sequence(1, products.getTotal())}" class="page-item"><a class="page-link" th:href="@{${'./?page='+i}}" th:text="${i}"></a></li>
+                </ul>
+            </nav>
         </main>
 
     </div>

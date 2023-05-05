@@ -48,8 +48,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-bot">
 		<div class="header-bot_inner_wthreeinfo_header_mid">
 			<div class="col-md-4 header-middle">
-				<form action="#" method="post">
-					<input type="search" name="search" placeholder="Search here..." required="">
+				<form th:action="@{./mens}" method="get">
+					<input type="search" name="keyword" placeholder="Search here..." required="">
 					<input type="submit" value=" ">
 					<div class="clearfix"></div>
 				</form>
@@ -355,6 +355,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"></div>
 		</div>
 	</div>
+	<nav aria-label="Page navigation example">
+		<ul class="pagination">
+			<li th:each="i : ${#numbers.sequence(1, menProducts.getTotal())}" class="page-item"><a class="page-link" th:href="@{${'./mens?page='+i}}" th:text="${i}"></a></li>
+		</ul>
+	</nav>
 	</div>
 	<!-- //mens -->
 	<!--/grids-->

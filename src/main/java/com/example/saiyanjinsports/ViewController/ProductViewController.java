@@ -4,12 +4,16 @@ import com.example.saiyanjinsports.Entities.Category;
 import com.example.saiyanjinsports.Entities.Gender;
 import com.example.saiyanjinsports.Entities.Product;
 import com.example.saiyanjinsports.Entities.User;
+import com.example.saiyanjinsports.Payload.request.Product.ProductView;
 import com.example.saiyanjinsports.Repository.CategoryRepository;
 import com.example.saiyanjinsports.Repository.GenderRepository;
 import com.example.saiyanjinsports.Repository.ProductRepository;
 import com.example.saiyanjinsports.Service.FileService;
 import com.example.saiyanjinsports.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,9 +42,19 @@ public class ProductViewController {
     FileService fileService;
 
     @RequestMapping("/")
-    public String getAll(Model model){
-        List<Product> products = productRepository.findAll();
-        model.addAttribute("products", products);
+    public String getAll(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
+                         @RequestParam(value = "size", defaultValue = "4") int size,
+                         @RequestParam(value = "keyword",defaultValue = "") String keyword){
+        if(page>0){
+            page--;
+        }
+        Pageable pageable = PageRequest.of(page,size);
+        ProductView productView = new ProductView();
+        Page<Product> p = productRepository.findAll(pageable,keyword);
+        productView.setProducts(p);
+        productView.setTotal(p.getTotalPages());
+//        List<Product> products = productRepository.findAll();
+        model.addAttribute("products", productView);
         return "/Admin/Product/product";
     }
     @RequestMapping(value = "/add", method = RequestMethod.GET)
