@@ -21,10 +21,11 @@ public class ProductClientController {
 
     @GetMapping("/mens")
     public String getMenProducts(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
-                                 @RequestParam(value = "size", defaultValue = "8") int size){
+                                 @RequestParam(value = "size", defaultValue = "8") int size,
+                                 @RequestParam(value = "keyword",defaultValue = "") String keyword){
         Pageable pageable = PageRequest.of(page,size);
         ProductView  productView = new ProductView();
-        Page<Product> p = productRepository.findMenProducts(pageable);
+        Page<Product> p = productRepository.findMenProducts(pageable,keyword);
         productView.setProducts(p);
         productView.setTotal(p.getTotalPages());
         model.addAttribute("menProducts",productView);
@@ -32,10 +33,11 @@ public class ProductClientController {
     }
     @GetMapping("/womens")
     public String getWomenProducts(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
-                                   @RequestParam(value = "size", defaultValue = "8") int size){
+                                   @RequestParam(value = "size", defaultValue = "8") int size,
+                                   @RequestParam(value = "keyword",defaultValue = "") String keyword){
         Pageable pageable = PageRequest.of(page, size);
         ProductView productView = new ProductView();
-        Page<Product> p = productRepository.finWomenProducts(pageable);
+        Page<Product> p = productRepository.finWomenProducts(pageable,keyword);
         productView.setProducts(p);
         productView.setTotal(p.getTotalPages());
         model.addAttribute("womenProducts", productView);

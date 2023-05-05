@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,11 +17,13 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
 
-    @Query(value = "SELECT * FROM product p WHERE p.gender_id = 1 ",nativeQuery = true)
-    Page<Product> findMenProducts(Pageable pageable);
+    @Query(value = "SELECT * FROM product WHERE product.gender_id = 1 AND" +
+            " (:name = '' or product.pro_name like concat('%', :name, '%')) ",nativeQuery = true)
+    Page<Product> findMenProducts(Pageable pageable, @Param("name") String s);
 
-    @Query(value = "SELECT * FROM product p WHERE p.gender_id = 2 ",nativeQuery = true)
-    Page<Product> finWomenProducts(Pageable pageable);
+    @Query(value = "SELECT * FROM product WHERE product.gender_id = 2 AND" +
+            " (:name = '' or product.pro_name like concat('%', :name, '%'))",nativeQuery = true)
+    Page<Product> finWomenProducts(Pageable pageable,@Param("name") String s);
 
 
 }
